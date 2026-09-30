@@ -14,7 +14,7 @@ challenges = {
     "september": "Write daily — 10 minutes",
     "october": "Plank daily — 2 minutes",
     "november": "Sleep 8 hours daily",
-    "december": "Reflect on the day — 10 minutes"
+    "december": None
 }
 
 def index(request):
