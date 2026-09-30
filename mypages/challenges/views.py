@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.urls import reverse
-from django.http import HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseRedirect
+from django.http import Http404, HttpResponse, HttpResponseBadRequest, HttpResponseNotFound, HttpResponseRedirect
+from django.template.loader import render_to_string
 
 challenges = {
     "january": "Push ups daily — 20 reps",
@@ -42,5 +43,7 @@ def monthly_challenges(request, month: str):
             "month": month
         })
     except:
-        return HttpResponseBadRequest("Something went wrong")
+        raise Http404()
+        # response_data = render_to_string("404.html")
+        # return HttpResponseNotFound(response_data)
     
