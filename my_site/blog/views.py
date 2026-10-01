@@ -33,7 +33,7 @@ def all_posts(request):
     })
 
 
-def post_by_title(request, title: str):
+def post_by_title(request, title):
     post = None
     for p in posts:
         if p.get("slug") == title:
