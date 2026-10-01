@@ -1,3 +1,4 @@
+from datetime import date
 from django.shortcuts import render
 from django.urls import reverse
 from django.template.loader import render_to_string
@@ -6,16 +7,13 @@ from django.http import HttpResponse, HttpResponseRedirect, HttpResponseNotFound
 
 posts = [
     { 
-        "slug": "my-first-blog",
-        "title": "My First Blog", 
-        "body": "He there this is my first every blog on the internet", 
-        "createdAt": "2026-10-01T12:00" 
-    },
-    { 
-        "slug": "my-second-blog",
-        "title": "My Second Blog", 
-        "body": "He there this is my second every blog on the internet", 
-        "createdAt": "2026-10-01T13:00" 
+        "slug": "mountains",
+        "image": "mountains.jpg",
+        "author": "Gaurav Gupta",
+        "date": date(2026, 10, 1),
+        "title": "Mountain Hiking", 
+        "excerpt": """There's nothing like the views you get when hiking in the mountains! And i wasn't even prepared for what happend whilst I was enjoying the view.""",
+        "content": """Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum."""
     },
 ]
 
