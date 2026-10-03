@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block title %}This Post Title{% endblock %}
+{% block title %}{{post.title}}{% endblock %}
 
 {% block css_files %}
     <link rel="stylesheet" href="{% static 'blog/post-detail.css' %}" />
@@ -9,18 +9,16 @@
 
 {% block content %}
     <section id="summary">
-        <h2>Post Title</h2>
+        <h2>{{post.title}}</h2>
         <article>
-            <img src="{% static 'blog/images/mountains.jpg' %}" alt="Post Title" />
-            <address>By Gaurav Gupta</address>
+            <img src="{% static 'blog/images/'|add:post.image %}" alt="{{ post.title }}" />
+            <address>By {{post.author|title}}</address>
             <div>
-                Last updated on <time>July 21<sup>st</sup></time>
+                Last updated on <time>{{ post.date | date:"d M Y" }}</time>
             </div>
         </article>
     </section>
     <main>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</p>
-        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since 1966, when designers at Letraset and James Mosley, the librarian at St Bride Printing Library in London, took a 1914 Cicero translation and scrambled it to make dummy text for Letraset's Body Type sheets. It has survived not only many decades, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised thanks to these sheets and more recently with desktop publishing software like Aldus PageMaker and Microsoft Word including versions of Lorem Ipsum.</p>
+        {{post.content|linebreaks}}
     </main>
 {% endblock %}

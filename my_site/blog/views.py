@@ -30,24 +30,16 @@ def index(request):
 
 
 def all_posts(request):
-    print("working")
     return render(request, "blog/posts.html", {
         "posts": posts
     })
 
 
 def post_by_title(request, title):
-    post = None
-    for p in posts:
-        if p.get("slug") == title:
-            post = p
-            break
-
-    if post is None:
-        return HttpResponseNotFound("This post is not available or maybe deleted")
+    identified_post = next(post for post in posts if post['slug'] == title)
 
     return render(request, "blog/post.html", {
         "title": title,
-        "post": post
+        "post": identified_post
     })
 
