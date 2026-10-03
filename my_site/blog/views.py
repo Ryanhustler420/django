@@ -17,10 +17,15 @@ posts = [
     },
 ]
 
+def get_date(post):
+    return post.get('date')
+
 
 def index(request):
+    sorted_posts = sorted(posts, key=get_date)
+    latest_posts = sorted_posts[-3:]
     return render(request, "blog/index.html", {
-        "posts": posts
+        "posts": latest_posts
     })
 
 
